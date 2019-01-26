@@ -147,7 +147,7 @@ class DeepNetTrainer(object):
 
                         Ypred, loss = self._do_evaluate(X, Y)
 
-                        vloss = loss.data.cpu()[0]
+                        vloss = loss.data.to('cpu').item()
                         if hasattr(self.criterion, 'size_average') and self.criterion.size_average:
                             epo_loss += vloss * mb_size
                         else:
@@ -199,7 +199,7 @@ class DeepNetTrainer(object):
 
                 Ypred, loss = self._do_evaluate(X, Y)
 
-                vloss = loss.data.cpu()[0]
+                vloss = loss.data.to('cpu').item()
                 if hasattr(self.criterion, 'size_average') and self.criterion.size_average:
                     epo_loss += vloss * mb_size
                 else:
