@@ -110,7 +110,7 @@ class DeepNetTrainer(object):
 
                     Ypred, loss = self._do_optimize(X, Y)
 
-                    vloss = loss.data.cpu().item()
+                    vloss = loss.data.cpu().numpy().item()
                     if hasattr(self.criterion, 'size_average') and self.criterion.size_average:
                         epo_loss += mb_size * vloss
                     else:
